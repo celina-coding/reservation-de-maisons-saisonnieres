@@ -1,0 +1,22 @@
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.h-font{
+    font-family: 'Merienda', cursive;
+}
+section{
+  padding: 40px 50px;
+}
+ 
+.custom-bg{
+  background-color: #191970;
+}
+.custom-bg:hover{
+    background-color:#0000CD ;
+}
+.footer-color{
+  background-color:rgb(244, 244, 244);
+  
+}
+
