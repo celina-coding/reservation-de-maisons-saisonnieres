@@ -29,8 +29,8 @@
     <?php
     if(isset($_GET['id'])){
       $annonce_id=$_GET['id'];
-      $query_details="select * from `annonce_table` where annonce_id=$annonce_id";
-      $result_details=mysqli_query($conn,$query_details);
+      $query_detail="select * from `annonce_table` where annonce_id=$annonce_id";
+      $result_details=mysqli_query($conn,$query_detail);
       //verifier le nombre de lignes que notre requete nous renvoie
       if(mysqli_num_rows($result_details)>0){
         //afficher les details de l'annonce
