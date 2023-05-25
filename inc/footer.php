@@ -6,7 +6,7 @@
 <div class="container-fluid footer-color mt-5 ">
   <div class="row">
     <div class="col-lg-4 p-4">
-       <h3 class="h-font fw-bold fs-3 mb-3" >Logo</h3>
+       <h3 class="h-font fw-bold fs-3 mb-3" >HeavenlyHome</h3>
        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi, animi, ducimus numquam illo eum quos similique consequatur reiciendis aperiam magni iure  </p>
     </div>
     <div class="col-lg-4 p-4 ">

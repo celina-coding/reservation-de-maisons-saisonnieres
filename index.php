@@ -133,7 +133,7 @@
 
                <div class="d-flex justify-content-evenly mb-2">
                 <a href="#" class="btn btn-sm custom-bg shadow-none text-white ">Réserver</a>
-                <a href="details.php" class="btn btn-sm btn-outline-dark shadow-none  ">Plus de détails</a>
+                <a href="details.php?id='.$annonce_row2['annonce_id'].'" class="btn btn-sm btn-outline-dark shadow-none  ">Plus de détails</a>
                
              </div>
             </div>
@@ -182,7 +182,7 @@
    
                     <div class="d-flex justify-content-evenly mb-2">
                      <a href="#" class="btn btn-sm custom-bg shadow-none text-white ">Réserver</a>
-                     <a href="details.php" class="btn btn-sm btn-outline-dark shadow-none  ">Plus de détails</a>
+                     <a href="details.php?id='.$annonce_row['annonce_id'].'" class="btn btn-sm btn-outline-dark shadow-none  ">Plus de détails</a>
                     
                   </div>
                  </div>

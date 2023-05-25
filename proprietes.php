@@ -32,7 +32,7 @@
     ?>
 
     <div class="my-5 px-4">
-        <h2 class="fw-bold h-font mt-3 text-center ">Propriétées</h2>
+        <h2 class="fw-bold h-font mt-3 text-center ">Propriétés</h2>
         <div class="h-line"></div>
     </div>
     
@@ -122,7 +122,7 @@
              <a href="#" class="btn btn-sm custom-bg shadow-none w-100 text-white"style="margin-right:6px;">Réserver</a>
              </div>
              <div class="d-flex justify-content-evenly">
-              <a href="details.php" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Plus de détails</a>
+              <a href="details.php?id='.$annonce_row2['annonce_id'].'" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Plus de détails</a>
              </div>
 
             
@@ -137,7 +137,7 @@
       }else{
         $annonce_query2=mysqli_query($conn,"select * from `annonce_table`") ;
         if(mysqli_num_rows($annonce_query2)==0){
-          echo"acun produit trouvé";}else{
+          echo"aucune annonce trouvé";}else{
             while($annonce_row2=mysqli_fetch_assoc($annonce_query2)){
               echo'
                     <div class="card mb-4 rounded shadow border-0">
@@ -179,7 +179,7 @@
                        <a href="#" class="btn btn-sm custom-bg shadow-none w-100 text-white"style="margin-right:6px;">Réserver</a>
                        </div>
                        <div class="d-flex justify-content-evenly">
-                        <a href="details.php" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Plus de détails</a>
+                        <a href="details.php?id='.$annonce_row2['annonce_id'].'" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Plus de détails</a>
                        </div>
 
                       

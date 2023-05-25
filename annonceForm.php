@@ -24,6 +24,8 @@
       <div class="mb-3">
         <label for="annonce_image" class="form-label">Photo</label>
         <input type="file" id="annonce_image" class="form-control shadow-none mb-2" required="required" name="annonce_image" /> 
+        
+        
       </div>
 
       <div class="mb-3">
@@ -36,17 +38,12 @@
                   $categorie_name=$row_categorie['categorie_name'];
                   $categories_id=$row_categorie['categories_id'];
                   echo "<div>
-                           <option value ='$categories_id'>$categorie_name
+                           <option value ='$categorie_name'>$categorie_name
                         </div>";}}
+                        
           ?>
           </select>
-          <!-- <label for="annonce_categorie" class="form-label">Catégorie</label>
-          <select name="annonce_categorie"class="form-select shadow-none">
-            <option value="villa">Villa</option>
-            <option value="chalet">Chalet</option>
-            <option value="appartement">Appartement</option>
-            <option value="studio">Studio</option>
-          </select> -->
+          
       </div>
 
       <div class="mb-3">
@@ -80,11 +77,16 @@
           <input type="date" id="annonce_date_fin" class="form-control shadow-none mb-2" required="required" name="annonce_date_fin"/>
       </div>
 
+       <div class="mb-3">
+            <label for="user_email" class="form-label">Adresse mail</label>
+            <input type="email" id="user_email" class="form-control shadow-none mb-2" required="required" name="user_email"/>
+      </div> 
 
 
+  
 
       <div class="d-flex align-items-center justify-content-between mb-2">
-        <button type="submit" value="ajout" class="btn btn-dark shadow-none me-2" name="annonce_ajout">Ajouter mon annonce</button>
+      <button type="submit" value="ajout" class="btn btn-dark shadow-none me-2" name="annonce_ajout">Ajouter mon annonce</button> 
       </div>
       </div>
       <div class="modal-footer">
@@ -97,6 +99,7 @@
 <?php
 
 if(isset($_POST['annonce_ajout'])){
+  $user_email=$_POST['user_email'];
   $annonce_title=$_POST['annonce_title'];
   $annonce_prix=$_POST['annonce_prix'];
   $annonce_image=$_FILES['annonce_image']['name'];
@@ -108,6 +111,7 @@ if(isset($_POST['annonce_ajout'])){
   $annonce_ville=$_POST['annonce_ville'];
   $annonce_date_debut=date('Y-m-d', strtotime($_POST['annonce_date_debut']));
   $annonce_date_fin=date('Y-m-d', strtotime($_POST['annonce_date_fin']));
+ 
 
   // select query
   $select_annonce_query = "Select annonce_titre from `annonce_table` where annonce_titre='$annonce_title'";
@@ -118,7 +122,7 @@ if(isset($_POST['annonce_ajout'])){
   }else{
     move_uploaded_file($annonce_image_tmp,"annonces_img/$annonce_image");
     //insert query
-    $insert_annonce_query = "insert into `annonce_table`(annonce_titre,annonce_prix,annonce_image,annonce_categorie,annonce_nbr_chambres,annonce_nbr_salles_de_bain,annonce_nbr_balcons,annonce_ville,annonce_date_debut,annonce_date_fin) values('$annonce_title',$annonce_prix,'$annonce_image','$annonce_categorie','$annonce_nbr_chambres','$annonce_nbr_salle_de_bain',' $annonce_nbr_de_balcons','$annonce_ville','$annonce_date_debut','$annonce_date_fin')";
+    $insert_annonce_query = "insert into `annonce_table`(user_email,annonce_titre,annonce_prix,annonce_image,annonce_categorie,annonce_nbr_chambres,annonce_nbr_salles_de_bain,annonce_nbr_balcons,annonce_ville,annonce_date_debut,annonce_date_fin) values('$user_email','$annonce_title',$annonce_prix,'$annonce_image','$annonce_categorie','$annonce_nbr_chambres','$annonce_nbr_salle_de_bain',' $annonce_nbr_de_balcons','$annonce_ville','$annonce_date_debut','$annonce_date_fin')";
 
     $sql_annonce_execute=mysqli_query($conn,$insert_annonce_query);
   }
