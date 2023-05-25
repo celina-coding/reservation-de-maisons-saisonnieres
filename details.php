@@ -26,56 +26,77 @@
 <div class="container">
   <div class="row">
   <div class="col-lg-12 col-md-12 px-4">
-                <div class="card border-0 shadow mb-3 " style="width: 300px; margin:auto;">
-                 <img src="annonces_img/pexels-chait-goli-1918291.jpg" class="card-img-top" alt="appartement">
-                <div class="card-body">
-                 <h5 class="card-title">50 m2 Maison de vacances</h5>
-                 <span class="badge bg-light text-dark text-wrap lh-base mb-2"> 3200 DA par nuit
-                 </span>
+    <?php
+    if(isset($_GET['id'])){
+      $annonce_id=$_GET['id'];
+      $query_details="select * from `annonce_table` where annonce_id=$annonce_id";
+      $result_details=mysqli_query($conn,$query_details);
+      //verifier le nombre de lignes que notre requete nous renvoie
+      if(mysqli_num_rows($result_details)>0){
+        //afficher les details de l'annonce
+        $details_row=mysqli_fetch_assoc($result_details);
+        echo'<div class="card border-0 shadow mb-3 " style="width: 300px; margin:auto;">
+        <img src="annonces_img/'.$details_row['annonce_image'].'" class="card-img-top" alt="appartement">
+       <div class="card-body">
+        <h5 class="card-title">'.$details_row['annonce_titre'].'</h5>
+        <span class="badge bg-light text-dark text-wrap lh-base mb-2">'.$details_row['annonce_prix'].' DA par nuit
+        </span>
 
-               <div class="disponibilité mb-2">
-                <h6 class="mb-1">Disponibilité</h6>
-                <span class="badge bg-light text-dark text-wrap lh-base mb-3">Du 2023-05-13 au 2023-05-30
-                </span>
-               </div> 
+      <div class="disponibilité mb-2">
+       <h6 class="mb-1">Disponibilité</h6>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">Du '.$details_row['annonce_date_debut'].' au '.$details_row['annonce_date_fin'].'
+       </span>
+      </div> 
 
-               <div class="ville mb-2">
-                <h6 class="mb-1">Ville</h6>
-                <span class="badge bg-light text-dark text-wrap lh-base mb-3">Béjaia
-                </span>
-               </div>  
+      <div class="ville mb-2">
+       <h6 class="mb-1">Ville</h6>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$details_row['annonce_ville'].'
+       </span>
+      </div>  
 
-               <div class="categories mb-2 ">
-              <h6 class="mb-1">Catégorie</h6>
-              <span class="badge bg-light text-dark text-wrap lh-base mb-1">Appartement
-              </span>
-             </div>
-              
+      <div class="categories mb-2 ">
+     <h6 class="mb-1">Catégorie</h6>
+     <span class="badge bg-light text-dark text-wrap lh-base mb-1">'.$details_row['annonce_categorie'].'
+     </span>
+    </div>
+     
 
-               <div class="caracteristiques mb-2">
-                <h6 class="mb-1">Caractéristiques</h6>
-                <span class="badge bg-light text-dark text-wrap lh-base mb-3">2 Chambres
-               </span>
-                <span class="badge bg-light text-dark text-wrap lh-base mb-3">1 Salle de bain
-                </span>
-               <span class="badge bg-light text-dark text-wrap lh-base mb-3">2 Balcons
-               </span>
-               </div>
+      <div class="caracteristiques mb-2">
+       <h6 class="mb-1">Caractéristiques</h6>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$details_row['annonce_nbr_chambres'].' chambres
+      </span>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$details_row['annonce_nbr_salles_de_bain'].' salle de bains
+       </span>
+      <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$details_row['annonce_nbr_balcons'].' balcons
+      </span>
+      </div>
 
-               <div class="email_proprietaire mb-2">
-                <h6 class="mb-1">Email du propriétaire</h6>
-                <span class="badge bg-light text-dark text-wrap lh-base mb-3">celinafeghou@gmail.com
-                </span>
-               </div> 
+      <div class="email_proprietaire mb-2">
+       <h6 class="mb-1">Email du propriétaire</h6>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$details_row['user_email'].'
+       </span>
+      </div> 
 
-               <div class="d-flex justify-content-evenly mb-2">
-                <a href="#" class="btn btn-sm custom-bg shadow-none text-white ">Réserver</a>
-                <a href="favoris.php" class="btn btn-sm btn-outline-dark shadow-none  ">Ajouter aux favoris</a>
-             </div>
-            </div>
-          </div>
-        </div>
-        </div>
+      <div class="d-flex justify-content-evenly mb-2">
+       <a href="#" class="btn btn-sm custom-bg shadow-none text-white ">Réserver</a>
+       <div class="d-flex justify-content-evenly">
+       <a href="favoris.php?id='.$details_row['annonce_id'].'" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Ajouter aux favoris</a>
+      </div>
+       
+    </div>
+   </div>
+ </div>
+</div>
+</div>';
+       
+      }
+
+    }
+  
+
+
+    ?>
+                
        </div>
     </div>
     </div>
