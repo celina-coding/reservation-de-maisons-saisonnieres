@@ -82,6 +82,7 @@ if(isset($_POST['user_register'])){
   $insert_query="insert into `user_table` (username,user_email,user_password,user_image,user_addresse) values('$user_username','$user_email','$hash_password','$user_image','$user_adresse')";
   // execution of the query
   $sql_execute=mysqli_query($conn,$insert_query);
+
   }
   
 }

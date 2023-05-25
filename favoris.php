@@ -32,155 +32,39 @@
     
   <!-- container -->
   <?php
+  require('inc/header.php');
   if(isset($_GET['id']) && isset($_SESSION['username'])){
     $annonce_id=$_GET['id'];
     $username=$_SESSION['username'];
-    //verifier si l'annonce existe dans la table des favoris
-    $query_favoris="select * from `favoris_table` where annonce_id=$annonce_id";
-    $result_favoris=mysqli_query($conn,$query_favoris);
-    if(mysqli_num_rows($result_favoris)>0){
-      //verifier si l'annonce est deja dans les favoris du user 
-      $query_favoris_test="select * from `favoris_table` where annonce_id=$annonce_id and username='$username'";
-      $result_favoris_test=mysqli_query($conn,$query_favoris_test);
-      if(mysqli_num_rows($result_favoris_test)>0){
-        echo'<script>alert("cette annonce est deja dans vos favoris")</script>';
-        // recuperer l'annonce ajouté par le user et l'afficher 
-        $query_select_favoris="select annonce_table.* from `annonce_table` inner join `favoris_table` on annonce_table.annonce_id = favoris_table.annonce_id where favoris_table.username='$username'";
-        $result_query_select_favoris=mysqli_query($conn,$query_select_favoris);
-        if(mysqli_num_rows($result_query_select_favoris)>0){
-          while($row_favoris=mysqli_fetch_assoc($result_query_select_favoris)){
-            echo'<div class="container">
-                  <div class="row">
-                   <div class="col-lg-12 col-md-12 px-4">
-                    <div class="card border-0 shadow mb-3 " style="width: 300px; margin:auto;">
-                      <img src="annonces_img/'.$row_favoris['annonce_image'].'" class="card-img-top" alt="appartement">
-                      <div class="card-body">
-                       <h5 class="card-title">'.$row_favoris['annonce_titre'].'</h5>
-                       <span class="badge bg-light text-dark text-wrap lh-base mb-2">'.$row_favoris['annonce_prix'].' DA par nuit
-                       </span>
-    
-          <div class="disponibilité mb-2">
-           <h6 class="mb-1">Disponibilité</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">Du '.$row_favoris['annonce_date_debut'].' au '.$row_favoris['annonce_date_fin'].'
-           </span>
-          </div> 
-    
-          <div class="ville mb-2">
-           <h6 class="mb-1">Ville</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_ville'].'
-           </span>
-          </div>  
-    
-          <div class="categories mb-2 ">
-         <h6 class="mb-1">Catégorie</h6>
-         <span class="badge bg-light text-dark text-wrap lh-base mb-1">'.$row_favoris['annonce_categorie'].'
-         </span>
-        </div>
-         
-    
-          <div class="caracteristiques mb-2">
-           <h6 class="mb-1">Caractéristiques</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_chambres'].' chambres
-          </span>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_salles_de_bain'].' salle de bains
-           </span>
-          <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_balcons'].' balcons
-          </span>
-          </div>
-    
-          <div class="email_proprietaire mb-2">
-           <h6 class="mb-1">Email du propriétaire</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['user_email'].'
-           </span>
-          </div> 
-           
-        </div>
-       </div>
-     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>';}
-}
-
-
-      }}else{
-        if (isset($_SESSION['username'])){
-          $username=$_SESSION['username'];
-        //inserer l'id de l'annonce et du user dans la table des favoris
-        $query_insert_favoris="insert into `favoris_table` (annonce_id,username) values($annonce_id,'$username')";
-        $query_ajout_table_favoris=mysqli_query($conn,$query_insert_favoris);
-        // recuperer l'annonce ajouté par le user et l'afficher 
-        $query_select_favoris="select annonce_table.* from `annonce_table` inner join `favoris_table` on annonce_table.annonce_id = favoris_table.annonce_id where favoris_table.username='$username'";
-        $result_query_select_favoris=mysqli_query($conn,$query_select_favoris);
-        if(mysqli_num_rows($result_query_select_favoris)>0){
-          while($row_favoris=mysqli_fetch_assoc($result_query_select_favoris)){
-            echo'<div class="container">
-                  <div class="row">
-                   <div class="col-lg-12 col-md-12 px-4">
-                    <div class="card border-0 shadow mb-3 " style="width: 300px; margin:auto;">
-                      <img src="annonces_img/'.$row_favoris['annonce_image'].'" class="card-img-top" alt="appartement">
-                      <div class="card-body">
-                       <h5 class="card-title">'.$row_favoris['annonce_titre'].'</h5>
-                       <span class="badge bg-light text-dark text-wrap lh-base mb-2">'.$row_favoris['annonce_prix'].' DA par nuit
-                       </span>
-    
-          <div class="disponibilité mb-2">
-           <h6 class="mb-1">Disponibilité</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">Du '.$row_favoris['annonce_date_debut'].' au '.$row_favoris['annonce_date_fin'].'
-           </span>
-          </div> 
-    
-          <div class="ville mb-2">
-           <h6 class="mb-1">Ville</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_ville'].'
-           </span>
-          </div>  
-    
-          <div class="categories mb-2 ">
-         <h6 class="mb-1">Catégorie</h6>
-         <span class="badge bg-light text-dark text-wrap lh-base mb-1">'.$row_favoris['annonce_categorie'].'
-         </span>
-        </div>
-         
-    
-          <div class="caracteristiques mb-2">
-           <h6 class="mb-1">Caractéristiques</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_chambres'].' chambres
-          </span>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_salles_de_bain'].' salle de bains
-           </span>
-          <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['annonce_nbr_balcons'].' balcons
-          </span>
-          </div>
-    
-          <div class="email_proprietaire mb-2">
-           <h6 class="mb-1">Email du propriétaire</h6>
-           <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_favoris['user_email'].'
-           </span>
-          </div> 
-           
-        </div>
-       </div>
-     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>';}
-
-          }
-        }
-
-       
+    // verifier si l'annonce existe dans la table des favoris
+    $query_select_favoris="select * from `favoris_table` where annonce_id=$annonce_id";
+    $result_query_select_favoris=mysqli_query($conn,$query_select_favoris);
+    if(mysqli_num_rows($result_query_select_favoris)>0){
+      // verifier si l'annonce est deja dans les favoris du user
+      $query_favoris_check="select * from `favoris_table` where annonce_id=$annonce_id and username='$username'";
+      $result_query_favoris_check=mysqli_query($conn,$query_favoris_check);
+      if(mysqli_num_rows($result_query_favoris_check)>0){
+        //dans ce cas la l'annonce est deja dans la liste des favoris du user
+        echo'<script>alert("annonce deja dans vos favoris")</script>';
       }
+    }else{
+      //inserer l'id de l'annonce dans la tables des favoris
+      $query_insert_favoris="insert into favoris_table (annonce_id,username) values($annonce_id,'$username') ";
+      $query_ajout_table_favoris=mysqli_query($conn,$query_insert_favoris); 
+    }
 
-    
+  }
 
-  }else{
-    echo'<script>alert("Veuillez vous inscrire")</script>';
-    echo '<div style="width:70%; height:220px; margin-top:50px;" class="container footer-color p-4 rounded mb-3 shadow fovoris-color w-70" >
+
+?>
+  <h2 class="mt-5 text-center mb-4 fw-bold h-font">Vos favoris</h2>
+
+<div class="container">
+  <div class="row">
+  <?php
+  if(!isset($_SESSION['username'])){
+    echo '<script>alert("veuillez vous connectez pour remplir votre liste des favoris")</script>';
+    echo'<div style="width:70%; height:220px; margin-top:50px;" class="container footer-color p-4 rounded mb-3 shadow fovoris-color w-70" >
     <div class="row">
         <div class="col-lg-12 p-4">
           <div class="text-center">
@@ -190,12 +74,69 @@
         </div>
     </div>
   </div>';
-  }
-  
-  
-  ?>
+  }else{
+    $username=$_SESSION['username'];
+    $query_select_annonce_favoris="select annonce_table.* from annonce_table inner join favoris_table on annonce_table.annonce_id=favoris_table.annonce_id where favoris_table.username='$username'";
+    $result_query_select_annonce_favoris=mysqli_query($conn,$query_select_annonce_favoris);
+    if(mysqli_num_rows($result_query_select_annonce_favoris)>0){
+      while($row_annonce_favoris=mysqli_fetch_assoc($result_query_select_annonce_favoris)){
+        echo'<div class="col-lg-4 col-md-6">
+        <div class="card border-0 shadow mb-3 " style="width: 300px; margin:auto;">
+         <img src="annonces_img/'.$row_annonce_favoris['annonce_image'].'" class="card-img-top" alt="appartement">
+        <div class="card-body">
+         <h5 class="card-title">'.$row_annonce_favoris['annonce_titre'].'</h5>
+         <span class="badge bg-light text-dark text-wrap lh-base mb-2">'.$row_annonce_favoris['annonce_prix'].'DA par nuit
+         </span>
 
-  
+       <div class="disponibilité mb-2">
+        <h6 class="mb-1">Disponibilité</h6>
+        <span class="badge bg-light text-dark text-wrap lh-base mb-3">Du '.$row_annonce_favoris['annonce_date_debut'].' au '.$row_annonce_favoris['annonce_date_fin'].'
+        </span>
+       </div> 
+
+       <div class="ville mb-2">
+        <h6 class="mb-1">Ville</h6>
+        <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_annonce_favoris['annonce_ville'].'
+        </span>
+       </div>  
+      
+
+       <div class="caracteristiques mb-1">
+        <h6 class="mb-1">Caractéristiques</h6>
+        <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_annonce_favoris['annonce_nbr_salles_de_bain'].' Salles de bain
+        </span>
+       <span class="badge bg-light text-dark text-wrap lh-base mb-3">'.$row_annonce_favoris['annonce_nbr_balcons'].' Balcons
+       </span>
+       </div>
+
+       <div class="d-flex justify-content-evenly mb-2 ">
+                     <a href="supprimer_annonce.php?id='.$row_annonce_favoris['annonce_id'].'" class="btn btn-sm btn-outline-dark shadow-none  ">supprimer</a>
+                    
+                  </div>
+
+    </div>
+  </div>
+</div>';
+      }
+
+    }else{
+      echo'<div style="width:70%; height:220px; margin-top:50px;" class="container footer-color p-4 rounded mb-3 shadow fovoris-color w-70" >
+    <div class="row">
+        <div class="col-lg-12 p-4">
+          <div class="text-center">
+          <i class="bi bi-heart"></i>
+          </div>
+          <h5 class="text-center mt-3">Votre liste des favoris est vide!</h5>
+        </div>
+    </div>
+  </div>';
+
+    }
+  }
+
+  ?>
+    </div>
+       </div>
 
     <!-- footer -->
 

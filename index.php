@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HeavenlyHome</title>
+  
     <!-- bootstrap css link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- bootstrap icon -->
@@ -43,10 +44,12 @@
         
     </style>
 </head>
+
 <body class="bg-light">
-   <?php
-    require('inc/header.php');
-    ?>
+<?php
+ include_once 'inc/header.php'
+?>
+
 <!-- image -->
 <section class="home">
   <div class="home-text">
@@ -180,7 +183,7 @@
                     </span>
                     </div>
    
-                    <div class="d-flex justify-content-evenly mb-2">
+                    <div class="d-flex justify-content-evenly mb-2 ">
                      <a href="#" class="btn btn-sm custom-bg shadow-none text-white ">Réserver</a>
                      <a href="details.php?id='.$annonce_row['annonce_id'].'" class="btn btn-sm btn-outline-dark shadow-none  ">Plus de détails</a>
                     

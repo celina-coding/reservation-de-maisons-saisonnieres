@@ -35,8 +35,8 @@
              $categorie_query=mysqli_query($conn,"select * from `categories`");
              if(mysqli_num_rows($categorie_query)>0){
                while($row_categorie= mysqli_fetch_assoc($categorie_query)){
-                  $categorie_name=$row_categorie['categorie_name'];
-                  $categories_id=$row_categorie['categories_id'];
+                  $categorie_name=$row_categorie['name'];
+                  $categories_id=$row_categorie['id'];
                   echo "<div>
                            <option value ='$categorie_name'>$categorie_name
                         </div>";}}

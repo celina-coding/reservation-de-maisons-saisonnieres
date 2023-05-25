@@ -46,7 +46,7 @@ if(isset($_POST['user_login'])){
   if($row_count>0){
        $_SESSION['username']=$user_username;
        if(password_verify($user_password,$row_data['user_password'])){
-        echo "<script>alert('Login successful ')</script>";
+        echo "<script>alert('Connecté avec succés ')</script>";
        }else{
         echo "<script>alert('nom et mot de passe invalide')</script>";
        }

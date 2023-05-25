@@ -16,7 +16,7 @@
         echo '<a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Acceuil</a><br>
         <a href="favoris.php" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Favoris</a><br>
         <a href="reserve.php" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Réservé</a><br>
-        <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Profile</a><br>
+        <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Profil</a><br>
       </div>';
       }else{
         echo'<a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none mb-3">Acceuil</a><br>

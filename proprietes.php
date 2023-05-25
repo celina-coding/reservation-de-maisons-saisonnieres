@@ -195,48 +195,6 @@
 
        ?>
      
-        <!-- <div class="col-lg-8 col-md-12 px-4">
-          <div class="card mb-4 rounded shadow border-0">
-            <div class="row">
-           <div class="col-md-5">
-           <img src="img/proprietees/pexels-chait-goli-1918291.jpg." class="img-fluid rounded" style="height:100%;">
-           </div>  
-           <div class="col-md-5 px-3">
-            <h5 class="mb-2 mt-3">50 m2 Maison de vacances</h5>
-
-
-            <div class="ville mb-1">
-             <h6 class="mb-1">Ville</h6>
-             <span class="badge bg-light text-dark text-wrap lh-base mb-1">Oran
-             </span>
-            </div>
-
-            <div class="categories ">
-        <h6 class="mb-1">Catégorie</h6>
-        <span class="badge bg-light text-dark text-wrap lh-base mb-1">Appartement
-        </span>
-        </div>
-        <div class="caracteristiques ">
-        <h6 class="mb-1">Caractéristiques</h6>
-        <span class="badge bg-light text-dark text-wrap lh-base mb-1 ">1 Salle de bain
-        </span>
-        <span class="badge bg-light text-dark text-wrap lh-base mb-1 ">
-        </span>
-        <span class="badge bg-light text-dark text-wrap lh-base mb-1">1 Balcon
-        </span>
-        </div>
-           </div>
-           <div class="col-md-2 text-align-center mt-3 px-3 mb-2" style="margin-top:80px;">
-             <h6 class="mb-2 mt-5">3200DA par nuit</h6>
-             <div class="d-flex justify-content-evenly mb-2">
-               <a href="#" class="btn btn-sm custom-bg shadow-none w-100 text-white"style="margin-right:6px;">Réserver</a>
-             </div>
-              <div class="d-flex justify-content-evenly">
-                <a href="#" class="btn btn-sm btn-outline-dark w-100 shadow-none" style="margin-right:6px;" >Plus de détails</a>
-              </div>
-            </div>
-           </div>
-          </div> -->
          
           
 
